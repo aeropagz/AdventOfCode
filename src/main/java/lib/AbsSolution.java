@@ -1,6 +1,6 @@
 package lib;
 
-import aoc2022.Day1;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,21 +15,20 @@ public abstract class AbsSolution<T1, T2> {
 
     protected Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public abstract T1 part1(BufferedReader reader);
-    public abstract T2 part2(BufferedReader reader);
+    public abstract T1 part1(@NotNull BufferedReader reader);
 
-    public void run(){
-        T1 x = part1(bufferedReader());
-        T2 y = part2(bufferedReader());
+    public abstract T2 part2(@NotNull BufferedReader reader);
+
+    public void run() {
+        T1 x = part1(bufferedReader(getClassResource()));
+        T2 y = part2(bufferedReader(getClassResource()));
 
         log.info("Part 1 Result: {}", x);
         log.info("Part 2 Result: {}", y);
 
-    };
+    }
 
-
-    private BufferedReader bufferedReader() {
-        var resourceName = this.getClass().getSimpleName().toLowerCase(Locale.ROOT);
+    public BufferedReader bufferedReader(String resourceName) {
         var resource = this.getClass().getResource(resourceName);
 
         if (resource == null) {
@@ -43,5 +42,9 @@ public abstract class AbsSolution<T1, T2> {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private String getClassResource() {
+        return this.getClass().getSimpleName().toLowerCase(Locale.ROOT);
     }
 }

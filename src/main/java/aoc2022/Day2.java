@@ -1,13 +1,14 @@
 package aoc2022;
 
 import lib.AbsSolution;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.util.function.IntBinaryOperator;
 
 public class Day2 extends AbsSolution<Integer, Integer> {
     @Override
-    public Integer part1(BufferedReader reader) {
+    public Integer part1(@NotNull BufferedReader reader) {
         return this.scoreStrategyGuide(
                 reader,
                 (p1, p2) -> {
@@ -18,7 +19,7 @@ public class Day2 extends AbsSolution<Integer, Integer> {
     }
 
     @Override
-    public Integer part2(BufferedReader reader) {
+    public Integer part2(@NotNull BufferedReader reader) {
         return this.scoreStrategyGuide(
                 reader,
                 (p1, outcome) -> {

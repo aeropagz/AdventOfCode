@@ -11,16 +11,19 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 
-public abstract class AbsSolution {
+public abstract class AbsSolution<T1, T2> {
 
     protected Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public abstract void part1(BufferedReader reader);
-    public abstract void part2(BufferedReader reader);
+    public abstract T1 part1(BufferedReader reader);
+    public abstract T2 part2(BufferedReader reader);
 
     public void run(){
-        part1(bufferedReader());
-        part2(bufferedReader());
+        T1 x = part1(bufferedReader());
+        T2 y = part2(bufferedReader());
+
+        log.info("Part 1 Result: {}", x);
+        log.info("Part 2 Result: {}", y);
 
     };
 
